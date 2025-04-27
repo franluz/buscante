@@ -8,6 +8,7 @@ import { LivrosResultado, Item } from '../../models/interfaces';
 import { LivroVolumeInfo } from '../../models/livroVolumeInfo';
 import { LivroService } from '../../service/livro.service';
 import { LivroComponent } from '../../componentes/livro/livro.component';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 
 const PAUSA = 300;
@@ -29,9 +30,11 @@ export class ListaLivrosComponent implements AfterViewInit {
   mensagemErro = ''
   livrosResultado!: LivrosResultado;
   @ViewChild('campoBuscaElement') campoBuscaElement!: ElementRef;
-  constructor(private service: LivroService) { }
+  constructor(private service: LivroService,
+    private liveAnnouncer: LiveAnnouncer
+  ) { }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.campoBuscaElement.nativeElement.focus();
   }
 
@@ -47,6 +50,7 @@ export class ListaLivrosComponent implements AfterViewInit {
       }
     }),
     tap((resultado) => {
+      this.liveAnnouncer.announce(`Total de resuldado! ${resultado.totalItems} ` )
       this.livrosResultado = resultado;
     }),
     map((resultado) => resultado.items ?? []),
