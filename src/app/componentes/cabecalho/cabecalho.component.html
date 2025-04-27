@@ -1,16 +1,25 @@
 <header>
   <a class="logo"
-    routerLink="/lista-livros">
+    routerLink="/lista-livros"
+    routerLinkActive="active-page"
+    ariaCurrentWhenActive="page"
+    aria-label="Pagina Inicial">
     <img
       src="assets/imagens/logo.png"
       alt="Logo da aplicação Buscante">
   </a>
   <nav>
     <a
-      routerLink="/sobre">Sobre
+      routerLink="/sobre"
+      routerLinkActive="active-page"
+      aria-label="Mais informacoes sobre o Buscante"
+      >Sobre
     </a>
     <a
-      routerLink="/contato">Contato
+      routerLink="/contato"
+      routerLinkActive="active-page"
+      aria-label="Entre em contato"
+      >Contato
     </a>
   </nav>
 </header>
